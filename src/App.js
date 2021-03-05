@@ -9,27 +9,24 @@ export default function App() {
 	const [ pokemonsUrl, setPokemonsUrl ] = useState([])
 	const pokemonPromises = []
 	const [isLoading, setIsLoading ] = useState(true)
-
+	
 	useEffect(() => {
-		
-		
 
 		for(let i = 1; i <= 151; i++){
 
-			if(i !== 115){
-				pokemonPromises.push(
-					axios.get(getPokemonUrl(i))
-						.then(response => response.data)
-						
-				)
-			
-			}else{
-				pokemonPromises.push([])
-			}
+			pokemonPromises.push(
+				axios.get(getPokemonUrl(i))
+					.then(response => response.data)
+					.catch(error => {
+						console.log(error)
+						return []
+					})	
+			)
 		}	
 
 		Promise.all(pokemonPromises)
 			.then(pokemons => {
+				console.log(pokemons)
 				setIsLoading(false)
 				setPokemonsUrl(pokemons)
 			})
