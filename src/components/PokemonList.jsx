@@ -1,28 +1,28 @@
 import React from 'react'
+
+import * as S from '../style'
 import PokemonCard from './PokemonCard'
 
 export default function PokemonList({ pokemons }) {
 
     return(
-        <div>
-            <ul style={{display: 'flex', flexWrap: 'wrap'}}>
-                {
-                    pokemons.map((pokemon) => {
+        <S.List style={{display: 'flex', flexWrap: 'wrap'}}>
+            {
+                pokemons.map((pokemon, index) => {
 
-                        const { id, name, types} = pokemon
+                    const { name, types} = pokemon
 
-                        return (
-                            <PokemonCard
-                                key={id + 1}
-                                id={id}
-                                name={name}
-                                types={types}
-                            />
-                               
-                        )
-                    })
-                }
-            </ul>
-        </div>
+                    return (
+                        <PokemonCard
+                            key={index}
+                            id={index + 1}
+                            name={name}
+                            types={types}
+                        />
+                            
+                    )
+                })
+            }
+        </S.List>
     )
 }
