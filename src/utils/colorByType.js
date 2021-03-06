@@ -1,64 +1,65 @@
-const colorByType = (types) => {
+const colorByType = (types, index) => {
     
+    const arrayPosition = index ? index : 0
 
     if (types){
-        switch (types[0].type.name){
+        switch (types[arrayPosition].type.name){
             case 'bug':
-                return ['#729f3f']
+                return ['#FFF','#729F3F']
 
             case 'dark':
-                return ['#707070']
+                return ['#FFF','#707070']
 
             case 'dragon':
-                return ['#53a4cf', '#f16e57']
+                return ['#FFF','#53a4cf', '#f16e57']
 
             case 'electric':
-                return ['#eed535']
+                return ['#000','#eed535']
 
             case 'fairy':
-                return ['#fdb9e9']
+                return ['#000','#fdb9e9']
                 
             case 'fighting':
-                return ['#d56723']
+                return ['#FFF','#d56723']
             
             case 'fire':
-                return ['#fd7d24']
+                return ['#FFF','#fd7d24']
             
             case 'flying':
-                return ['#3dc7ef', '#bdb9b8']
+                return ['#000','#3dc7ef', '#bdb9b8']
                 
             case 'ghost':
-                return ['#7b62a3']
+                return ['#FFF','#7b62a3']
 
             case 'grass': 
-                return ['#9bcc50']
+                return ['#000','#9bcc50']
             
             case 'ground':
-                return ['#f7de3f', '#ab9842']
+                return ['#000','#f7de3f', '#ab9842']
 
             case 'ice': 
-                return ['#51c4e7']
+                return ['#000','#51c4e7']
             
             case 'normal':
-                return ['#a4acaf']
+                return ['#000','#a4acaf']
             
             case 'poison':
-                return ['#b97fc9']
+                return ['#FFF','#b97fc9']
             
             case 'psychic':
-                return ['#f366b9']
+                return ['#FFF','#f366b9']
 
             case 'rock':
-                return ['#a38c21']
+                return ['#FFF','#a38c21']
                 
             case 'steel':
-                return ['#9eb7b8']
+                return ['#000','#9eb7b8']
                 
             case 'water':
-                return ['#4592c4']
+                return ['#FFF','#4592c4']
                 
             default:
-                return ['slategray']
+                return ['#000','slategray']
         }
     }else{
         return ['slategray']

@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import PokemonList from './components/PokemonList'
+import * as S from './style'
+
+import PokeTitle from './components/PokeTitle'
+import PokeList from './components/PokeList'
 
 export default function App() {
 
-	const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
 	const [ pokemonsUrl, setPokemonsUrl ] = useState([])
 	const pokemonPromises = []
 	const [isLoading, setIsLoading ] = useState(true)
+
+	const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
 	
 	useEffect(() => {
 
@@ -43,8 +47,9 @@ export default function App() {
 	
 	return (
 		<>
-			<h1 style={{textAlign: 'center'}}>PokeList</h1>
-			<PokemonList pokemons={pokemonsUrl}/>
+			<S.GlobalStyle/>
+			<PokeTitle />
+			<PokeList pokemons={pokemonsUrl}/>
 		</>
 	)
 }

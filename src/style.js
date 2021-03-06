@@ -1,4 +1,31 @@
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
+
+export const GlobalStyle = createGlobalStyle`
+    body {
+        background: -moz-linear-gradient( to right, #0052b0, #ffd400 );
+        background: -webkit-linear-gradient( to right, #0052b0, #ffd400 );
+        background: linear-gradient( to right, #0052b0, #ffd400);
+
+       
+    }
+    @media(max-width: 800px){
+        body{
+            background: #0052b0DD;
+        }    
+    }
+`
+    
+export const TitleImageContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 3% 3%;
+`
+
+export const TitleImage = styled.img`
+    display: flex;
+    min-width: 200px;
+    max-width: 400px;
+`
 
 export const List = styled.div`
     display: flex;
@@ -7,13 +34,13 @@ export const List = styled.div`
 `
 
 export const Card = styled.div`
-    background-color: gainsboro;
+    background-color: #FFF;
     display: flex;
     list-style: none;
     min-width: 300px;
     min-height: 250px;
     margin: 12px;
-    border: 4px solid gainsboro;
+    border: 4px solid #FFF;
     border-radius: 15px;
     flex-direction: column;
     align-items: center;
@@ -35,15 +62,14 @@ export const ImageDiv = styled.div`
     display: flex;
     justify-content: center;
     background: linear-gradient(${({bgColor}) => {
-        return bgColor.length === 1 ? 
-            `180deg, ${bgColor[0]} 50%, ${bgColor[0]} 50%` : 
-            `180deg, ${bgColor[0]} 50%, ${bgColor[1]} 50%`
+        return bgColor.length === 2 ? 
+            `180deg, ${bgColor[1]} 50%, ${bgColor[1]} 50%`
+            : 
+            `180deg, ${bgColor[1]} 50%, ${bgColor[2]} 50%`
     }});
-        
     width: 100%;
     align-self: flex-start;
 `
-// linear-gradient(180deg, #1D3475 50%, #060D1F 50%)
 
 export const ImageInCardList = styled.img`
     width: 150px;
@@ -61,4 +87,40 @@ export const CardNumber = styled.a`
 export const CardTitle = styled.h1`
     text-transform: capitalize;
     margin-top: 5px;
+`
+
+export const TypesContainer = styled.div`
+    display: flex;
+    background-color: #FFF;
+    border: 2px solid #000;
+    border-radius: 15px;
+    width: 70%;
+    height: 30px;
+    margin-bottom: 15px;
+    padding: 2%;
+    flex-direction: row;
+    justify-content: space-around;
+`
+
+export const EachType = styled.div`
+    display: flex;
+    background: linear-gradient(${({bgColor}) => {
+        return bgColor.length === 2 ? 
+            `180deg, ${bgColor[1]} 50%, ${bgColor[1]} 50%`
+            : 
+            `180deg, ${bgColor[1]} 50%, ${bgColor[2]} 50%`
+    }});
+    width: 30%;
+    height: 30px;
+    border-radius: 10px;
+    padding: 0% 5% 0% 5%;
+    justify-content: center;
+    align-items: center;
+`
+
+export const TextofType = styled.a`
+    display: flex;
+    color: ${({color}) => color[0]};
+    font-size: 16px;
+    font-weight: 700;
 `
