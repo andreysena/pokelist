@@ -1,19 +1,19 @@
 import React from 'react'
 
 import * as S from '../style'
-import PokemonCard from './PokemonCard'
+import PokeCard from './PokeCard'
 
-export default function PokemonList({ pokemons }) {
-
+export default ({ pokemons }) => {
+    
     return(
         <S.List style={{display: 'flex', flexWrap: 'wrap'}}>
             {
                 pokemons.map((pokemon, index) => {
 
-                    const { name, types} = pokemon
+                    const { id, name, types} = pokemon
 
                     return (
-                        <PokemonCard
+                        <PokeCard
                             key={index}
                             id={index + 1}
                             name={name}
