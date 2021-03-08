@@ -3,12 +3,13 @@ import axios from 'axios'
 
 import * as S from './style'
 
+import Loading from './components/Loading'
 import PokeTitle from './components/PokeTitle'
 import PokeList from './components/PokeList'
 
 export default function App() {
 
-	const [ pokemonsUrl, setPokemonsUrl ] = useState([])
+	const [ pokemonUrl, setPokemonUrl ] = useState([])
 	const pokemonPromises = []
 	const [isLoading, setIsLoading ] = useState(true)
 
@@ -16,40 +17,42 @@ export default function App() {
 	
 	useEffect(() => {
 
-		for(let i = 1; i <= 151; i++){
+		for(let i = 1; i <= 898; i++){
 
 			pokemonPromises.push(
 				axios.get(getPokemonUrl(i))
 					.then(response => response.data)
 					.catch(error => {
-						console.log(error)
+						console.log(i + " "+ error)
 						return []
 					})	
 			)
 		}	
 
 		Promise.all(pokemonPromises)
-			.then(pokemons => {
-				console.log(pokemons)
+			.then(pokemon => {
+				console.log(pokemon)
 				setIsLoading(false)
-				setPokemonsUrl(pokemons)
+				setPokemonUrl(pokemon)
 			})
-		
+
 	}, [])
 
 	if(isLoading)
 		return (
-			<div style={{display: 'flex', justifyContent: 'center', alignContent: 'center'}}>
-				<h1 style={{alignSelf: 'center'}}>Loading PokeList...</h1>
-			</div>	
-		)
+			<>
+				<S.GlobalStyle />
+				<Loading />
+			</>
+	)
 
-	
 	return (
 		<>
 			<S.GlobalStyle/>
 			<PokeTitle />
-			<PokeList pokemons={pokemonsUrl}/>
+			<S.MainContainer>
+				<PokeList pokemon={pokemonUrl}/>	
+			</S.MainContainer>
 		</>
 	)
 }
