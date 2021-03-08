@@ -1,28 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import * as S from '../style'
 import PokeCard from './PokeCard'
+import pokemonByGeneration from '../utils/pokemonByGeneration'
+import GenerationBarOpitions from './GenerationBarOpitions'
+import ScrollToTop from './ScrollToTop'
 
-export default ({ pokemons }) => {
+export default ({ pokemon }) => {
+    
+    const [ rangeGeneration, setRangeGeneration ] = useState(pokemonByGeneration(1))
+
+    function alterGeneration(gen){
+        setRangeGeneration(gen)
+        console.log(gen)
+    }
     
     return(
-        <S.List style={{display: 'flex', flexWrap: 'wrap'}}>
-            {
-                pokemons.map((pokemon, index) => {
+        <S.MainContainer>
+            <S.TitleOpitionsGen>ESCOLHA A GERAÇÃO:</S.TitleOpitionsGen>
+            <GenerationBarOpitions alterGeneration={alterGeneration} />
+            <S.List>
+                
+                {
+                    pokemon.map((pokemon, index) => {
+                        if(index >= rangeGeneration[0] && index <= rangeGeneration[1]){
+                        
+                        const { id, name, types} = pokemon
 
-                    const { id, name, types} = pokemon
-
-                    return (
-                        <PokeCard
-                            key={index}
-                            id={index + 1}
-                            name={name}
-                            types={types}
-                        />
-                            
-                    )
-                })
-            }
-        </S.List>
+                        return (
+                            <PokeCard
+                                key={index}
+                                id={id}
+                                name={name}
+                                types={types}
+                            />
+                                
+                        )
+                        }
+                        
+                    })
+                }
+                
+                
+            </S.List>
+            <ScrollToTop />
+        </S.MainContainer>
     )
 }

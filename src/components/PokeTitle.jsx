@@ -1,6 +1,6 @@
 import React from 'react'
 
-import logoPokeList from '../assets/images/PokeList.png'
+import logoPokeList from '../assets/images/pokeList.png'
 import * as S from '../style'
 
 export default (props) => {

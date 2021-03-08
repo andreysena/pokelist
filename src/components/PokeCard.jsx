@@ -21,8 +21,13 @@ export default (props) => {
                 <S.CardTitle>{ name ? name: "Não não encontrado"}</S.CardTitle>
 
                 <h4 style={{marginBottom: '15px'}}>Tipos: </h4>
-
-                <PokeContainerType types={types} />
+                {
+                    types ? 
+                    <PokeContainerType types={types} />
+                    :
+                    <a>Não encontrado</a>
+                }
+                
 
             </S.Card>
     )
