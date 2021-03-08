@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle, keyframes } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
     body {
@@ -14,7 +14,30 @@ export const GlobalStyle = createGlobalStyle`
         }    
     }
 `
-    
+
+export const ContainerLoadingImage = styled.div`
+    display: flex;
+    min-height: ${({altura}) => `${altura}px`};
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+export const LoadingImage = styled.img`
+    width: 300px;
+`
+
+const spiner = keyframes`
+    to {
+        transform: rotate(360deg);
+    }
+`
+
+export const PokeBallSpiner = styled.img`
+    width: 50px;
+    animation: ${spiner} 0.7s linear infinite;
+`
+
 export const TitleImageContainer = styled.div`
     display: flex;
     justify-content: center;
@@ -25,6 +48,58 @@ export const TitleImage = styled.img`
     display: flex;
     min-width: 200px;
     max-width: 400px;
+    @media(max-width: 800px){
+        margin: 8% 0% 0% 0%;
+    }
+`
+
+export const MainContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`
+
+export const TitleOpitionsGen = styled.h1`
+    color: #FFF;
+    margin-bottom: 0;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    @media(max-width: 800px){
+        margin: 8% 0% 0% 0%;
+    }
+`
+
+export const GenOpitionBar = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 1.5% 0% 2% 0%;
+    flex-wrap: wrap;
+    @media(max-width: 800px){
+        margin: 4% 0% 8% 0%;
+    }
+`
+
+export const GenOpition = styled.button`
+    display: flex;
+    width: 45px;
+    height: 45px;
+    background: steelblue;
+    color: #FFF;
+    font-weight: bolder;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2% 2% 2%;
+    border-radius: 50%;
+    cursor: pointer;
+    border: ${(props) => {
+        if(props.value === props.generation){    
+            return '2px solid yellow    '
+        }else{
+            return 'none'
+        }
+    }};
 `
 
 export const List = styled.div`
@@ -123,4 +198,38 @@ export const TextofType = styled.a`
     color: ${({color}) => color[0]};
     font-size: 16px;
     font-weight: 700;
+`
+
+export const ScrollToTop = styled.div`
+    display: flex;
+    background-color: slategray;
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+`
+
+const scrollTop = keyframes`
+    from {
+        -moz-transform: translateY(-2px);
+        -webkit-transform: translateY(-2px);
+        transform: translateY(-2px);
+    }
+
+    to: {
+        -moz-transform: translateY(4px);
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+    }
+`
+
+export const ScrollToTopIcon = styled.img`
+    color: #FFF;
+    width: 25px;
+    height: 25px;
+    animation: ${scrollTop} 0.3s alternate ease infinite;
 `
