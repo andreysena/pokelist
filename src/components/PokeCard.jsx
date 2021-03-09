@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import * as S from '../style.js'
 import colorByType from '../utils/colorByType'
 import PokeContainerType from './PokeContainerType'
+import PokeModal from './PokeModal'
 
 export default (props) => {
 
     const { id, name, types } = props
-    
+    const [ isOpen, setIsOpen ] = useState(false)
+
     return(
-            <S.Card>
+            <>
+            <S.Card onClick={() => setIsOpen(!isOpen)}>
                 <S.ImageDiv bgColor={types ? colorByType(types) : colorByType(null)}>
                     <S.ImageInCardList 
                         src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
@@ -28,8 +31,12 @@ export default (props) => {
                     <a>Não encontrado</a>
                 }
                 
-
             </S.Card>
+            {
+                isOpen ? <PokeModal onClose={() => setIsOpen(false)} name={name}/> : null
+                    
+            }
+            </>
     )
     
        

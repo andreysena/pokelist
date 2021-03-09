@@ -5,8 +5,6 @@ export const GlobalStyle = createGlobalStyle`
         background: -moz-linear-gradient( to right, #0052b0, #ffd400 );
         background: -webkit-linear-gradient( to right, #0052b0, #ffd400 );
         background: linear-gradient( to right, #0052b0, #ffd400);
-
-       
     }
     @media(max-width: 800px){
         body{
@@ -232,4 +230,34 @@ export const ScrollToTopIcon = styled.img`
     width: 25px;
     height: 25px;
     animation: ${scrollTop} 0.3s alternate ease infinite;
+`
+
+export const Modal = styled.div`
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 50;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    
+`
+
+export const ContainerModal = styled.div`
+    background-color: #FFF;
+    color: #000;
+    width: 60%;
+    height: 60%;
+    border-radius: 15px;
+`
+
+export const CloseModalButton = styled.button`
+    background-color: transparent;
+    outline: none;
+    width: 32px;
+    height: 32px;
+    border: none;
 `
