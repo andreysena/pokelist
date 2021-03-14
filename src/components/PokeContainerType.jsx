@@ -4,27 +4,26 @@ import * as S from '../style'
 import colorByType from '../utils/colorByType'
 
 export default ({types}) => {
-
+            
     return (
         <S.TypesContainer>
             {
-            types.map((pokeTypes, index)=> {
-                
-                return(
+                types.map((pokeTypes, index)=> {
                     
-                        <S.EachType 
-                            bgColor={colorByType(types, index)}
-                        >
-                            <S.TextofType color={colorByType(types, index)}>
-                                { pokeTypes.type.name }
-                            </S.TextofType>
-                        </S.EachType> 
+                    const type = types[index].type.name
                     
-                )
-                
-            })
+                    return(
+                            <S.EachType 
+                                bgColor={colorByType(type)}
+                            >
+                                <S.TextofType color={colorByType(type)}>
+                                    { pokeTypes.type.name }
+                                </S.TextofType>
+                            </S.EachType> 
+                    )
+                    
+                })
             }
-        </S.TypesContainer> 
-        
-    )
+        </S.TypesContainer>
+    )  
 }

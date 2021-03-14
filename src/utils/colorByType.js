@@ -1,9 +1,6 @@
-const colorByType = (types, index) => {
+const colorByType = (typeName) => { 
     
-    const arrayPosition = index ? index : 0
-
-    if (types){
-        switch (types[arrayPosition].type.name){
+        switch (typeName){
             case 'bug':
                 return ['#FFF','#729F3F']
 
@@ -61,9 +58,6 @@ const colorByType = (types, index) => {
             default:
                 return ['#000','slategray']
         }
-    }else{
-        return ['slategray']
-    }    
 }
 
 export default colorByType

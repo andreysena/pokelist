@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
         background: -moz-linear-gradient( to right, #0052b0, #ffd400 );
         background: -webkit-linear-gradient( to right, #0052b0, #ffd400 );
         background: linear-gradient( to right, #0052b0, #ffd400);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
     @media(max-width: 800px){
         body{
@@ -62,7 +63,6 @@ export const TitleOpitionsGen = styled.h1`
     margin-bottom: 0;
     font-size: 20px;
     text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     @media(max-width: 800px){
         margin: 8% 0% 0% 0%;
     }
@@ -160,6 +160,12 @@ export const CardNumber = styled.a`
 export const CardTitle = styled.h1`
     text-transform: capitalize;
     margin-top: 5px;
+    text-align: center;
+`
+
+export const TitleTypes = styled.h4`
+    text-align: center;
+    margin-bottom: 15px;
 `
 
 export const TypesContainer = styled.div`
@@ -168,11 +174,12 @@ export const TypesContainer = styled.div`
     border: 2px solid #000;
     border-radius: 15px;
     width: 70%;
-    height: 30px;
     margin-bottom: 15px;
     padding: 2%;
     flex-direction: row;
     justify-content: space-around;
+    align-self: center;
+    flex-wrap: wrap;
 `
 
 export const EachType = styled.div`
@@ -183,7 +190,7 @@ export const EachType = styled.div`
             : 
             `180deg, ${bgColor[1]} 50%, ${bgColor[2]} 50%`
     }});
-    width: 30%;
+    min-width: 30%;
     height: 30px;
     border-radius: 10px;
     padding: 0% 5% 0% 5%;
@@ -247,17 +254,97 @@ export const Modal = styled.div`
 `
 
 export const ContainerModal = styled.div`
+    display: flex;
     background-color: #FFF;
     color: #000;
-    width: 60%;
-    height: 60%;
+    width: 40%;
+    height: 85%;
+    border: 4px solid #FFF;
     border-radius: 15px;
+    flex-direction: column;
+    overflow: hidden;
+    @media only screen and (max-width: 800px){
+        width: 90%;
+    }
+    overflow-y: auto;
 `
 
 export const CloseModalButton = styled.button`
+    display: flex;
+    position: absolute;
     background-color: transparent;
     outline: none;
     width: 32px;
     height: 32px;
     border: none;
+    justify-content: flex-start;
+    align-items: flex-end;
+    align-self: flex-end;
+    :before, 
+    :after {
+        content: ' ';
+        position: absolute;
+        width: 5px;
+        height: 24px;
+        background-color: #000;
+    }
+    :before{
+        -moz-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    :after{
+        -moz-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+`
+
+export const ModalContent = styled.div`
+    display: flex;
+    width: auto;
+    margin: 2%;
+    flex-direction: column;
+    justify-content: center;
+    
+`
+
+export const FirstModalDivision = styled.div`
+    background-color: rgba(0, 0, 0, 0.090);
+    display: flex;
+    flex-direction: row;
+    padding: 2% 4%;
+    border-radius: 15px;
+`
+
+export const PokeBodyInfo = styled.div` 
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+`
+
+export const EachModalContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 0% 0% 10% 0%;
+    :last-child{
+        margin: 0;
+    }
+`
+
+export const ModalTitle = styled.h4`
+    color: slategray;
+    margin: 0;
+`
+
+export const ModalP = styled.p`
+    color: #000;
+    margin: 4% 0% 0% 0%;
+    font-size: 20px;
+    font-weight: bold;
+`
+
+export const ContainerAbilities = styled.div`
+    width: 50%;
+    text-transform: capitalize;
 `

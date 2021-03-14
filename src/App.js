@@ -9,31 +9,30 @@ import PokeList from './components/PokeList'
 
 export default function App() {
 
-	const [ pokemonUrl, setPokemonUrl ] = useState([])
+	const [ pokemonInfo, setPokemonInfo ] = useState([])
 	const pokemonPromises = []
 	const [isLoading, setIsLoading ] = useState(true)
-
-	const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
 	
 	useEffect(() => {
 
 		for(let i = 1; i <= 898; i++){
 
 			pokemonPromises.push(
-				axios.get(getPokemonUrl(i))
+				axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
 					.then(response => response.data)
 					.catch(error => {
 						console.log(i + " "+ error)
 						return []
 					})	
 			)
+
 		}	
 
 		Promise.all(pokemonPromises)
 			.then(pokemon => {
-				console.log(pokemon)
+				console.log("Estes são os pokemon: ", pokemon)
+				setPokemonInfo(pokemon)
 				setIsLoading(false)
-				setPokemonUrl(pokemon)
 			})
 
 	}, [])
@@ -51,7 +50,7 @@ export default function App() {
 			<S.GlobalStyle/>
 			<PokeTitle />
 			<S.MainContainer>
-				<PokeList pokemon={pokemonUrl}/>	
+				<PokeList pokemon={pokemonInfo} />	
 			</S.MainContainer>
 		</>
 	)

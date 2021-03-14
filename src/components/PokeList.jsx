@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 import * as S from '../style'
 import PokeCard from './PokeCard'
@@ -14,7 +15,7 @@ export default ({ pokemon }) => {
         setRangeGeneration(gen)
         console.log(gen)
     }
-    
+
     return(
         <S.MainContainer>
             <S.TitleOpitionsGen>ESCOLHA A GERAÇÃO:</S.TitleOpitionsGen>
@@ -23,16 +24,21 @@ export default ({ pokemon }) => {
                 
                 {
                     pokemon.map((pokemon, index) => {
+
+                        const { id, name, abilities, types, height, weight, stats} = pokemon
+
                         if(index >= rangeGeneration[0] && index <= rangeGeneration[1]){
                         
-                        const { id, name, types} = pokemon
-
                         return (
                             <PokeCard
                                 key={index}
                                 id={id}
                                 name={name}
+                                height={height}
+                                weight={weight}
+                                abilities={abilities}
                                 types={types}
+                                stats={stats}
                             />
                                 
                         )

@@ -1,29 +1,25 @@
 import React, { useState } from 'react'
 
 import * as S from '../style.js'
-import colorByType from '../utils/colorByType'
 import PokeContainerType from './PokeContainerType'
+import PokemonImage from './PokemonImage'
 import PokeModal from './PokeModal'
 
-export default (props) => {
-
-    const { id, name, types } = props
+export default ({ id, name, height, weight, abilities, types, stats}) => {
+    
     const [ isOpen, setIsOpen ] = useState(false)
 
     return(
             <>
             <S.Card onClick={() => setIsOpen(!isOpen)}>
-                <S.ImageDiv bgColor={types ? colorByType(types) : colorByType(null)}>
-                    <S.ImageInCardList 
-                        src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`}
-                    />   
-                </S.ImageDiv>
+                
+                <PokemonImage id={id} types={types ? types[0].type.name : null} />
 
                 <S.CardNumber>Nº {id}</S.CardNumber>
 
                 <S.CardTitle>{ name ? name: "Não não encontrado"}</S.CardTitle>
 
-                <h4 style={{marginBottom: '15px'}}>Tipos: </h4>
+                <S.TitleTypes>Tipos: </S.TitleTypes>
                 {
                     types ? 
                     <PokeContainerType types={types} />
@@ -33,7 +29,17 @@ export default (props) => {
                 
             </S.Card>
             {
-                isOpen ? <PokeModal onClose={() => setIsOpen(false)} name={name}/> : null
+                isOpen ? 
+                    <PokeModal 
+                        onClose={() => setIsOpen(false)} 
+                        id={id}
+                        name={name}
+                        height={height}
+                        weight={weight}
+                        abilities={abilities}
+                        types={types}
+                        stats={stats}
+                    /> : null
                     
             }
             </>
