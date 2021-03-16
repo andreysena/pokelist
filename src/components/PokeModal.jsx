@@ -27,7 +27,7 @@ export default ({onClose = () => {}, id, name, height, weight, abilities, types,
 
                 <S.CardNumber>Nº {id}</S.CardNumber>
 
-                <S.CardTitle>{ name ? name: "Não não encontrado"}</S.CardTitle>
+                <S.PokemonName>{ name ? name: "Não não encontrado"}</S.PokemonName>
 
                 <S.ModalContent>
 
@@ -36,13 +36,12 @@ export default ({onClose = () => {}, id, name, height, weight, abilities, types,
                         <PokeBodyInfo height={height} weight={weight} />
                         
                         <PokeAbilities abilities={abilities} />
+
+                        <PokeStats stats={stats}/>
                         
                     </S.FirstModalDivision>
                     
-                    <S.TitleTypes>Tipos:</S.TitleTypes>
                     <PokeContainerType types={types} />
-
-                    <PokeStats stats={stats}/>
 
                 </S.ModalContent>
                 

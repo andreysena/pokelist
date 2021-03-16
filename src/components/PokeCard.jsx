@@ -5,7 +5,7 @@ import PokeContainerType from './PokeContainerType'
 import PokemonImage from './PokemonImage'
 import PokeModal from './PokeModal'
 
-export default ({ id, name, height, weight, abilities, types, stats}) => {
+export default ({ id, name, height, weight, abilities, types, stats, images}) => {
     
     const [ isOpen, setIsOpen ] = useState(false)
 
@@ -17,16 +17,10 @@ export default ({ id, name, height, weight, abilities, types, stats}) => {
 
                 <S.CardNumber>Nº {id}</S.CardNumber>
 
-                <S.CardTitle>{ name ? name: "Não não encontrado"}</S.CardTitle>
+                <S.PokemonName>{ name ? name: "Não não encontrado"}</S.PokemonName>
 
-                <S.TitleTypes>Tipos: </S.TitleTypes>
-                {
-                    types ? 
-                    <PokeContainerType types={types} />
-                    :
-                    <a>Não encontrado</a>
-                }
-                
+                <PokeContainerType types={types ? types : null} />
+                       
             </S.Card>
             {
                 isOpen ? 
@@ -39,6 +33,7 @@ export default ({ id, name, height, weight, abilities, types, stats}) => {
                         abilities={abilities}
                         types={types}
                         stats={stats}
+                        images={images}
                     /> : null
                     
             }

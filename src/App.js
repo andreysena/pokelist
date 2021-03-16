@@ -34,7 +34,6 @@ export default function App() {
 				setPokemonInfo(pokemon)
 				setIsLoading(false)
 			})
-
 	}, [])
 
 	if(isLoading)
